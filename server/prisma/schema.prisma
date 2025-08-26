@@ -1,0 +1,117 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  username  String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Profile information
+  firstName String?
+  lastName  String?
+  avatar    String?
+  
+  // Settings
+  theme     String   @default("dark")
+  language  String   @default("en")
+  
+  // Statistics
+  totalTests     Int @default(0)
+  totalWords     Int @default(0)
+  totalTime      Int @default(0) // in seconds
+  bestWpm        Float @default(0)
+  averageWpm     Float @default(0)
+  bestAccuracy   Float @default(0)
+  averageAccuracy Float @default(0)
+  
+  // Relations
+  testSessions TestSession[]
+  achievements UserAchievement[]
+
+  @@map("users")
+}
+
+model TestSession {
+  id        String   @id @default(cuid())
+  userId    String?
+  createdAt DateTime @default(now())
+
+  // Test configuration
+  testType     String // 'words', 'sentences', 'paragraphs', 'code'
+  difficulty   String // 'beginner', 'intermediate', 'advanced', 'professional'
+  duration     Int    // in seconds
+  textContent  String
+  
+  // Results
+  wpm          Float
+  accuracy     Float
+  errors       Int
+  consistency  Float
+  wordsTyped   Int
+  timeSpent    Int // actual time spent in seconds
+  
+  // Detailed metrics
+  keystrokeData String? // Store detailed keystroke timing data as JSON string
+  errorData     String? // Store error positions and types as JSON string
+  
+  // Relations
+  user User? @relation(fields: [userId], references: [id])
+
+  @@map("test_sessions")
+}
+
+model Achievement {
+  id          String @id @default(cuid())
+  name        String @unique
+  description String
+  icon        String
+  category    String // 'speed', 'accuracy', 'consistency', 'milestone'
+  condition   String   // Conditions to unlock this achievement as JSON string
+  points      Int    @default(0)
+  
+  // Relations
+  users UserAchievement[]
+
+  @@map("achievements")
+}
+
+model UserAchievement {
+  id            String   @id @default(cuid())
+  userId        String
+  achievementId String
+  unlockedAt    DateTime @default(now())
+  
+  // Relations
+  user        User        @relation(fields: [userId], references: [id])
+  achievement Achievement @relation(fields: [achievementId], references: [id])
+
+  @@unique([userId, achievementId])
+  @@map("user_achievements")
+}
+
+model TextContent {
+  id         String @id @default(cuid())
+  type       String // 'words', 'sentences', 'paragraphs', 'code'
+  difficulty String // 'beginner', 'intermediate', 'advanced', 'professional'
+  content    String
+  language   String @default("en")
+  tags       String?  // Array of tags for categorization as JSON string
+  active     Boolean @default(true)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("text_content")
+}

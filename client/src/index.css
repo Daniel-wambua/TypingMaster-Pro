@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  * {
+    border-color: theme('colors.gray.200');
+  }
+  
+  body {
+    @apply bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  }
+  
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+  }
+  
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none;
+  }
+  
+  .btn-primary {
+    @apply btn bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800;
+  }
+  
+  .btn-secondary {
+    @apply btn bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600;
+  }
+  
+  .btn-outline {
+    @apply btn border border-gray-300 bg-transparent hover:bg-gray-50 dark:border-gray-600 dark:hover:bg-gray-800;
+  }
+  
+  .input {
+    @apply flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100;
+  }
+  
+  .card {
+    @apply rounded-lg border border-gray-200 bg-white text-gray-900 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100;
+  }
+  
+  /* Fixed typing area with proper word wrapping */
+  .typing-area {
+    @apply font-mono text-lg leading-relaxed p-6 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800/50 min-h-[200px] focus:outline-none focus:border-blue-500 focus:bg-white dark:focus:bg-gray-800;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    max-width: 100%;
+    overflow: hidden;
+    line-height: 1.8;
+  }
+  
+  .typing-area .text-content {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    display: inline;
+  }
+  
+  .char-correct {
+    @apply text-green-600 dark:text-green-400;
+    background-color: rgba(34, 197, 94, 0.1);
+    border-radius: 2px;
+    padding: 1px 2px;
+  }
+  
+  .char-incorrect {
+    @apply text-red-600 dark:text-red-400;
+    background-color: rgba(239, 68, 68, 0.1);
+    border-radius: 2px;
+    padding: 1px 2px;
+  }
+  
+  .char-current {
+    @apply bg-blue-500 text-white;
+    animation: pulse 1s infinite;
+    border-radius: 2px;
+    padding: 1px 2px;
+  }
+  
+  .char-pending {
+    @apply text-gray-500 dark:text-gray-400;
+  }
+  
+  /* Ensure space characters are visible */
+  .char-space {
+    display: inline-block;
+    width: 0.5em;
+  }
+  
+  .char-space::before {
+    content: '·';
+    color: rgba(156, 163, 175, 0.5);
+  }
+}

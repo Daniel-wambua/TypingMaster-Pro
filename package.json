@@ -1,0 +1,21 @@
+{
+  "name": "typing-speed-test",
+  "version": "1.0.0",
+  "description": "A comprehensive typing speed test application for users from beginner to professional level",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
+    "client:dev": "cd client && npm run dev",
+    "server:dev": "cd server && npm run dev",
+    "client:build": "cd client && npm run build",
+    "server:build": "cd server && npm run build",
+    "install:all": "npm install && cd client && npm install && cd ../server && npm install",
+    "setup": "npm run install:all && cd server && npx prisma generate && npx prisma db push"
+  },
+  "keywords": ["typing", "speed", "test", "training", "wpm", "accuracy"],
+  "author": "Experienced Developer",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
