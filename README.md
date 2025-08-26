@@ -35,7 +35,7 @@
 
 > **Note**: Replace this section with your actual deployment URL once deployed
 
-🌐 **Live Application**: [https://typingmaster-pro.vercel.app](https://typingmaster-pro.vercel.app)
+🌐 **Live Application**: [https://typingmaster-pro.vercel.app](https://typing-master-pro-eta.vercel.app/)
 
 Try the application live with:
 - ✅ Real book content from multiple sources
