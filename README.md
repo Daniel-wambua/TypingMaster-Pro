@@ -8,7 +8,43 @@
 [![Express.js](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)](https://expressjs.com/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
-✨
+## 📸 Screenshots
+
+### 🏠 Home Page & Main Interface
+<div align="center">
+  <img src="screenshots/screenshot1.png" alt="TypingMaster Pro Homepage" width="90%">
+</div>
+
+*Modern, clean interface with real-time typing test*
+
+### 📚 Book Practice Mode
+<div align="center">
+  <img src="screenshots/screenshot2.png" alt="Book Practice with Real Content" width="90%">
+</div>
+
+*Practice with real classic literature and chapter navigation*
+
+### 📊 Advanced Features
+<div align="center">
+  <img src="screenshots/screenshot3.png" alt="Advanced Analytics and Features" width="90%">
+</div>
+
+*Comprehensive analytics, progress tracking, and professional features*
+
+## 🔗 Live Demo
+
+> **Note**: Replace this section with your actual deployment URL once deployed
+
+🌐 **Live Application**: [https://typingmaster-pro.vercel.app](https://typingmaster-pro.vercel.app)
+
+Try the application live with:
+- ✅ Real book content from multiple sources
+- ✅ Chapter navigation through classic literature  
+- ✅ Advanced analytics and progress tracking
+- ✅ Global leaderboards and achievements
+- ✅ Responsive design for all devices
+
+## ✨ Key Features
 
 ## 🚀 Quick Start
 
