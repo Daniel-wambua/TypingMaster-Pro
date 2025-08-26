@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  typingmaster:
+    build: .
+    ports:
+      - "3002:3002"
+    environment:
+      - NODE_ENV=production
+      - PORT=3002
+      - DATABASE_URL=file:./prod.db
+    volumes:
+      - typingmaster_data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3002/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  typingmaster_data:
